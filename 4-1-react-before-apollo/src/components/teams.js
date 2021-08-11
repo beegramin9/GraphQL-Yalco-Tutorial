@@ -101,7 +101,75 @@ function Teams() {
         if (loading) return <p className="loading">Loading...</p>
         if (error) return <p className="Error">Error</p>
 
-        return (<div></div>);
+        const handleChange = (e) => {
+            const {name, value} = e.target;
+            setInputs({
+                ...inputs,
+                [name]: value
+            })  
+        }
+
+        return (
+        <div className="inputContainer">
+            <table>
+                <tbody>
+                    {contentId !== 0 && (
+                        <tr>
+                            <td>Id</td>
+                            <td>{contentId}</td>
+                        </tr>
+                    )}
+                    <tr>
+                        <td>Manager</td>
+                        <td>
+                            <input type="text" name="manager" value={inputs.manager} onChange={handleChange}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Office</td>
+                        <td>
+                            <input type="text" name="office" value={inputs.office} onChange={handleChange}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Extension Number</td>
+                        <td>
+                            <input type="text" name="extension_number" value={inputs.extension_number} onChange={handleChange}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mascot</td>
+                        <td>
+                            <input type="text" name="mascot" value={inputs.mascot} onChange={handleChange}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cleaning Duty</td>
+                        <td>
+                            <input type="text" name="clearning_duty" value={inputs.clearning_duty} onChange={handleChange}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Project</td>
+                        <td>
+                            <input type="text" name="project" value={inputs.project} onChange={handleChange}/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {contentId === 0 ?
+                (<div className="buttons">
+                    <button onClick={() => {}}>Submit</button>
+                </div>) : (
+                <div className="buttons">
+                    <button onClick={() => {}}>Modify</button>
+                    <button onClick={() => {}}>Delete</button>
+                    <button onClick={() => setContentId(0)}>New</button>
+                </div>
+                )
+            }
+
+        </div>);
     }
 
     return (
